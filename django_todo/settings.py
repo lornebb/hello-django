@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 import dj_database_url
 
@@ -22,12 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '8i*d@ouv#^n%wy5qqm-j2#l#v7do8e2k%nk590mm)$xas0lgg4'
+SECRET_KEY = os.environ.get('SECRET_KEY', '8i*d@ouv#^n%wy5qqm-j2#l#v7do8e2k%nk590mm)$xas0lgg4')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['nullanion-django-todo-app.herokuapp.com']
+ALLOWED_HOSTS = ['os.environ.get('HEROKU_HOST_NAME')]
+# ['nullanion-django-todo-app.herokuapp.com']
 
 
 # Application definition
